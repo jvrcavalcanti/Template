@@ -1,0 +1,8 @@
+main {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: gray;
+    text-align: center;
+}

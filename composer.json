@@ -1,0 +1,15 @@
+{
+    "name": "accolon/template",
+    "authors": [
+        {
+            "name": "Joao Victor Rocha Cavalcanti",
+            "email": "jonnyvictor01@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Accolon\\Template": "src"
+        }
+    }
+}
