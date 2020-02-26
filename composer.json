@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Accolon\\Template": "src"
+            "Accolon\\Template\\": "src"
         }
     },
     "minimum-stability": "dev",
