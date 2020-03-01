@@ -13,11 +13,11 @@ class Template
         $template = "";
 
         foreach($this->libs["css"] as $css) {
-            $template .= "<link rel='stylesheet' href='{$css}'>";
+            $template .= file_get_contents($css);
         }
 
         foreach($this->css as $css) {
-            $template .= "<link rel='stylesheet' href='{$css}'>";
+            $template .= file_get_contents($css);
         }
 
         $title = $this->title;
@@ -31,7 +31,9 @@ class Template
                 <meta charset='{$charset}'>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
                 <title>{$title}</title>
+            <style>
             {$template}
+            </style>
             </head>
             <body>
         ";
@@ -39,21 +41,24 @@ class Template
 
     protected function footer(): string
     {
-        $template = "";
+        $lib = "";
 
         foreach($this->libs["js"] as $js) {
-            $template .= "<script src='{$js}'></script>";
+            $lib .= file_get_contents($js);
         }
+
+        $template = "";
 
         foreach($this->js as $js) {
-            $tmp = "<script src='{$js}'></script>";
-            if($this->babel) {
-                $tmp = "<script type='text/babel' src='{$js}'></script>";
-            }
-            $template .= $tmp;
+            $template .= file_get_contents($js);
         }
 
+        $template = ($this->babel) ? "<script type='text/babel'>{$template}</script>" : "<script>{$template}</script>";
+
         return "
+            <script>
+            {$lib}
+            </script>
             {$template}
             </body>
             </html>

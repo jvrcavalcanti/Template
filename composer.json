@@ -16,6 +16,9 @@
             "Accolon\\Template\\": "src"
         }
     },
+    "scripts": {
+        "serve": "php -S localhost:8000 -t test/"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

@@ -37,7 +37,7 @@ trait TraitTemplate
     public function preset($op)
     {
         if($op == "react") {
-            $this->react();
+            // $this->react();
         }
 
         if($op == "bootstrap") {
