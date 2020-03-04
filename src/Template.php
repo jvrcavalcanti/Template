@@ -2,11 +2,86 @@
 
 namespace Accolon\Template;
 
-use Accolon\Template\TraitTemplate;
+use Accolon\Template\Traits\Components;
+use Accolon\Template\Traits\Preset;
 
 class Template 
 {
-    use TraitTemplate;
+    use Preset;
+    use Components;
+
+    protected string $html;
+    protected string $title = "Accolon\\Template";
+    protected string $lang = "en";
+    protected string $charset = "UTF-8";
+    protected $libs = [
+        "js" => [],
+        "css" => []
+    ];
+    protected $css = [];
+    protected $js = [];
+
+    public function __construct(string $template)
+    {
+        $this->html = $template;
+    }
+
+    public function lib($type, $link)
+    {
+        $this->libs[$type][] = $link;
+        return $this;
+    }
+
+    public function lang($lang)
+    {
+        $this->lang = $lang;
+        return $this;
+    }
+
+    public function charset($charset)
+    {
+        $this->charset = $charset;
+        return $this;
+    }
+
+    public function title($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    public function js($link)
+    {
+        if(!is_array($link)) {
+            $link = [$link];
+        }
+
+        foreach($link as $js) {
+            $this->js[] = $js;
+        }
+
+        return $this;
+    }
+
+    public function css($link)
+    {
+        if(!is_array($link)) {
+            $link = [$link];
+        }
+
+        foreach($link as $css) {
+            $this->css[] = $css;
+        }
+
+        return $this;
+    }
+
+    public function fecth()
+    {
+        echo $this->header();
+        require_once $this->html;
+        echo $this->footer();
+    }
 
     protected function header(): string
     {
@@ -53,7 +128,7 @@ class Template
             $template .= file_get_contents($js);
         }
 
-        $template = ($this->babel) ? "<script type='text/babel'>{$template}</script>" : "<script>{$template}</script>";
+        $template = "<script>{$template}</script>";
 
         return "
             <script>

@@ -16,6 +16,11 @@
             "Accolon\\Template\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Components\\" : "components/"
+        }
+    },
     "scripts": {
         "serve": "php -S localhost:8000 -t test/"
     },
