@@ -2,13 +2,11 @@
 
 namespace Accolon\Template;
 
-use Accolon\Template\Traits\Components;
 use Accolon\Template\Traits\Preset;
 
 class Template 
 {
     use Preset;
-    use Components;
 
     protected string $html;
     protected string $title = "Accolon\\Template";
