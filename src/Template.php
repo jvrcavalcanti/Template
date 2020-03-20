@@ -12,8 +12,6 @@ class Template
     protected string $title = "Accolon\\Template";
     protected string $lang = "en";
     protected string $charset = "UTF-8";
-    protected string $head = "";
-    protected string $foot = "";
     protected $libs = [
         "js" => [],
         "css" => []
@@ -76,22 +74,10 @@ class Template
         return $this;
     }
 
-    public function head($file)
-    {
-        $this->head = file_get_contents($file);
-    }
-
-    public function foot($file)
-    {
-        $this->foot = file_get_contents($file);
-    }
-
     public function fecth()
     {
         echo $this->header();
-        echo $this->head;
         require_once $this->html;
-        echo $this->foot;
         echo $this->footer();
     }
 
