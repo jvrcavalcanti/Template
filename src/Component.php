@@ -13,10 +13,10 @@ class Component
         }
     }
 
-    public function render(): void
+    public function render(string $path): void
     {
-        echo "<style>" . file_get_contents("../view/{$this->dir}/style.css") . "</style>";
-        require_once "../view/{$this->dir}/index.php";
-        echo "<script>" . file_get_contents("../view/{$this->dir}/style.css") . "</script>";
+        echo "<style>" . file_get_contents("{$path}/{$this->dir}/style.css") . "</style>";
+        require_once "{$path}/{$this->dir}/index.php";
+        echo "<script>" . file_get_contents("{$path}/{$this->dir}/style.css") . "</script>";
     }
 }

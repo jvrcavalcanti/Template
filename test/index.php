@@ -7,7 +7,7 @@ require_once "../vendor/autoload.php";
 function component($name, $options = []) {
     $name = "\\Components\\{$name}";
     $component = new $name($options);
-    $component->render();
+    $component->render("../view");
 }
 
 $tpl = new Template("../view/index.php");
