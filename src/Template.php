@@ -74,7 +74,7 @@ class Template
         return $this;
     }
 
-    public function fecth()
+    public function fecth($data)
     {
         echo $this->header();
         require_once $this->html;
