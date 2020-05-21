@@ -3,6 +3,7 @@
 namespace Accolon\Template;
 
 use Accolon\Template\Traits\Preset;
+use ScssPhp\ScssPhp\Compiler;
 
 class Template 
 {
@@ -61,20 +62,20 @@ class Template
         return $this;
     }
 
-    public function css($link)
+    public function css($links)
     {
-        if(!is_array($link)) {
-            $link = [$link];
+        if(!is_array($links)) {
+            $links = [$links];
         }
 
-        foreach($link as $css) {
-            $this->css[] = $css;
+        foreach($links as $link) {
+            $this->css[] = $link;
         }
 
         return $this;
     }
 
-    public function fecth($data)
+    public function fecth($data = [])
     {
         echo $this->header();
         require_once $this->html;
@@ -85,12 +86,22 @@ class Template
     {
         $template = "";
 
+        $scss = new Compiler();
+
         foreach($this->libs["css"] as $css) {
-            $template .= file_get_contents($css);
+            $content = file_get_contents($css);
+            if (strpos($css, ".scss") !== false) {
+                $content = $scss->compile(file_get_contents($css));
+            }
+            $template .= $content;
         }
 
         foreach($this->css as $css) {
-            $template .= file_get_contents($css);
+            $content = file_get_contents($css);
+            if (strpos($css, ".scss") !== false) {
+                $content = $scss->compile(file_get_contents($css));
+            }
+            $template .= $content;
         }
 
         $title = $this->title;

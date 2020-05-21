@@ -11,8 +11,8 @@ function component($name, $options = []) {
 }
 
 $tpl = new Template("../view/index.php");
-$tpl->css("../view/style.css")
+$tpl->css("../view/style.scss")
     ->title("Teste")
-    ->preset("bootstrap-css")
+    ->preset("vue")
     ->js("../view/main.js")
     ->fecth();
