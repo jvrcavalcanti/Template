@@ -77,6 +77,10 @@ class Template
 
     public function fecth($data = [])
     {
+        foreach($data as $key => $value) {
+            $$key = $value;
+        }
+        
         echo $this->header();
         require_once $this->html;
         echo $this->footer();

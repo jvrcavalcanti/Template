@@ -15,4 +15,8 @@ $tpl->css("../view/style.scss")
     ->title("Teste")
     ->preset("vue")
     ->js("../view/main.js")
-    ->fecth();
+    ->fecth([
+        "user" => [
+            "name" => "a"
+        ]
+    ]);
