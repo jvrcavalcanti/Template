@@ -8,7 +8,7 @@ class Component
 
     public function __construct($options)
     {
-        foreach($options as $option => $value) {
+        foreach ($options as $option => $value) {
             $this->$option = $value;
         }
     }

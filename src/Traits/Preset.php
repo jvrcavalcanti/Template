@@ -6,15 +6,15 @@ trait Preset
 {
     public function preset($op)
     {
-        if($op == "bootstrap") {
+        if ($op == "bootstrap") {
             $this->bootstrap();
         }
 
-        if($op == "bootstrap-css") {
+        if ($op == "bootstrap-css") {
             $this->bootstrapCss();
         }
 
-        if($op == "vue") {
+        if ($op == "vue") {
             $this->vue();
         }
 

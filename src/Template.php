@@ -5,7 +5,7 @@ namespace Accolon\Template;
 use Accolon\Template\Traits\Preset;
 use ScssPhp\ScssPhp\Compiler;
 
-class Template 
+class Template
 {
     use Preset;
 
@@ -51,11 +51,11 @@ class Template
 
     public function js($link)
     {
-        if(!is_array($link)) {
+        if (!is_array($link)) {
             $link = [$link];
         }
 
-        foreach($link as $js) {
+        foreach ($link as $js) {
             $this->js[] = $js;
         }
 
@@ -64,11 +64,11 @@ class Template
 
     public function css($links)
     {
-        if(!is_array($links)) {
+        if (!is_array($links)) {
             $links = [$links];
         }
 
-        foreach($links as $link) {
+        foreach ($links as $link) {
             $this->css[] = $link;
         }
 
@@ -77,16 +77,12 @@ class Template
 
     public function fecth($data = [])
     {
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $$key = $value;
         }
-
-        $htmlContent = Transpilator::replaces(explode("\n", file_get_contents($this->html)));
-
-        $html = implode("\n", $htmlContent);
         
         echo $this->header();
-        eval($html);
+        include_once $this->html;
         echo $this->footer();
     }
 
@@ -96,7 +92,7 @@ class Template
 
         $scss = new Compiler();
 
-        foreach($this->libs["css"] as $css) {
+        foreach ($this->libs["css"] as $css) {
             $content = file_get_contents($css);
             if (strpos($css, ".scss") !== false) {
                 $content = $scss->compile(file_get_contents($css));
@@ -104,7 +100,7 @@ class Template
             $template .= $content;
         }
 
-        foreach($this->css as $css) {
+        foreach ($this->css as $css) {
             $content = file_get_contents($css);
             if (strpos($css, ".scss") !== false) {
                 $content = $scss->compile(file_get_contents($css));
@@ -136,13 +132,13 @@ class Template
     {
         $lib = "";
 
-        foreach($this->libs["js"] as $js) {
+        foreach ($this->libs["js"] as $js) {
             $lib .= file_get_contents($js);
         }
 
         $template = "";
 
-        foreach($this->js as $js) {
+        foreach ($this->js as $js) {
             $template .= file_get_contents($js);
         }
 
