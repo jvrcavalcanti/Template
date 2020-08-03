@@ -80,9 +80,13 @@ class Template
         foreach($data as $key => $value) {
             $$key = $value;
         }
+
+        $htmlContent = Transpilator::replaces(explode("\n", file_get_contents($this->html)));
+
+        $html = implode("\n", $htmlContent);
         
         echo $this->header();
-        require_once $this->html;
+        eval($html);
         echo $this->footer();
     }
 
