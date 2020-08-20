@@ -4,8 +4,38 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "386eaa3241b64ab3bae395a578f7cb80",
+    "content-hash": "4e6ee1bdf8d88a2ce71f9cda3ea50c90",
     "packages": [
+        {
+            "name": "accolon/view-components",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jvrcavalcanti/ViewComponents.git",
+                "reference": "86c09e579073b9230222323c7e0df8526dc15f3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jvrcavalcanti/ViewComponents/zipball/86c09e579073b9230222323c7e0df8526dc15f3c",
+                "reference": "86c09e579073b9230222323c7e0df8526dc15f3c",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Accolon\\ViewComponents\\": "src/"
+                },
+                "files": [
+                    "./src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "View components in php",
+            "time": "2020-08-20T08:12:24+00:00"
+        },
         {
             "name": "scssphp/scssphp",
             "version": "1.1.0",
@@ -74,8 +104,7 @@
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": {
-        "php": "^7.4"
-    },
-    "platform-dev": []
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
